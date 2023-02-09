@@ -1,53 +1,60 @@
 // grab all html elements
+var numGrids = 6;
+
+// getPickedColor();
+
+var headerBg = document.querySelector(".title");
 var refreshGameBtn = document.querySelector(".refresh");
 var easyBtn = document.querySelector(".easy");
 var hardBtn = document.querySelector(".hard");
 var colorHeading = document.querySelector("h1");
-var grids = document.querySelectorAll(".color_grids div");
+var grids = document.querySelectorAll(".grids");
+var i;
 var rgb;
-
-displayColorsOnGrids();
-displayColorsOnHeading();
+console.log(grids);
 // ------functions------
+// Generate random numbers
+getRandomColors();
+getPickedColor();
+generateRandomGridColors();
+
 function getRandomColors() {
-  r = Math.round(Math.random() * 255);
-  g = Math.round(Math.random() * 255);
-  b = Math.round(Math.random() * 255);
-  rgb = `rgb(${r}, ${g}, ${b})`;
+  let r = Math.round(Math.random() * 255);
+  let g = Math.round(Math.random() * 255);
+  let b = Math.round(Math.random() * 255);
+  rgb = `${r}, ${g}, ${b}`;
+
 }
-// console.log(r);
+// set header background color
+headerBg.style.backgroundColor = `rgb(${rgb})`;
 
-function displayColorsOnHeading() {
-  colorHeading.innerText = `RGB(${r}, ${g}, ${b})`;
-}
-function displayColorsOnGrids() {
-  grids.forEach((grid) => {
-    getRandomColors();
-    grid.style.backgroundColor = rgb;
-  });
-}
+// set h1 color
+colorHeading.textContent = `RGB(${rgb})`
 
-// function getFirstRowGrid() {
-//   for (i = 0; i < [...grids].length; i++) {
-//     var first = [...grids][i];
-//     console.log(first);
-//   }
-// }
+function reset() { }
+function getPickedColor() {
+  // loop through the grids and add a click listener
 
-// functions
+  for (i = 0; i < grids.length; i++) {
+    // console.log(grids[i].style.backgroundColor)
+    grids[i].addEventListener("click", function () {
 
-// event listeners
-refreshGameBtn.addEventListener("click", () => {
-  displayColorsOnGrids();
-  displayColorsOnHeading();
-});
-
-// convert the grids to an array and loop over them using forEach loop
-[...grids].forEach((grids) => {
-  grids.addEventListener("click", () => {
-    if (grids.style.backgroundColor === rgb) {
-      grids.style.backgroundColor = rgb;
-      console.log(rgb);
+      // this.style.backgroundColor = `rgb(${rgb})`
     }
-  });
-});
+
+    );
+
+  }
+
+}
+
+function generateRandomGridColors() {
+  for (i = 0; i < grids.length; i++) {
+    let randomColors = Math.random(rgb);
+    console.log(randomColors)
+    grids[i].style.backgroundColor = `rgb(${randomColors})`
+  }
+}
+
+// add event listener to buttons
+// grids.addEventListener("click", getPickedColor)

@@ -42,8 +42,8 @@ header {
   color: rgb(9, 161, 231);
   font-weight: bold;
 }
-.difficulty {
-}
+/* .difficulty {
+} */
 .color_grids {
   display: -ms-grid; /*internet explorer compatibility */
   display: grid;
@@ -58,7 +58,7 @@ header {
     100vh - 128px
   ); /* subtract the header and div height from the total viewport height*/
 }
-.color_grids div {
+.grids {
   width: 100px;
   height: 100px;
   background-color: blanchedalmond;
